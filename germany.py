@@ -1,0 +1,90 @@
+import requests
+import pyttsx3
+
+from bs4 import BeautifulSoup as bs
+import sys
+
+url = "https://en.pons.com/translate?q="
+try:
+    word = sys.argv[1]
+    
+except:
+    print("Specify the word!")
+    exit(-1)
+affix = "&l=deen&in=&lf=de&qnac="
+
+url = url + word + affix
+
+try:
+    r = requests.get(url)
+    soup = bs(r.content,"lxml")
+except:
+    print("Not connect to the internet")
+    exit(-1)
+
+# check there is a result
+isExistResults = len(soup.find_all("div", {"class":"results"}))
+
+if not isExistResults:
+    exit(-1)
+
+# is a word or a phrase
+# isAWord = len(soup.find_all("div",{"rel":word})) 
+print('<'*53) 
+
+isAWord = len(soup.find_all("div",{"class":"entry"}))
+
+if isAWord:
+    main_defination = soup.select("div.entry.first h3")
+    
+    # print(main_defination)
+
+    try:
+        ipa = soup.findAll("span", {"class":"phonetics"})[0].text
+    except:
+        ipa = ""
+
+    try:
+        pos = soup.findAll("acronym")[0].text
+    except:
+        pos = ""
+
+    
+
+    try:
+        definition = soup.select("dl.kne.first>dd>div.target")[0].text
+    except:
+        definition = ""
+
+    print ("--- " + word + " --- \n" + "IPA: " + ipa + "\nPOS: " + pos + "\nDefinition:" + definition )
+
+else:
+    try:
+        example = soup.select("div.results>dl.first .example")[0].text
+        
+    except:
+        exmaple = ""
+        exit(-1)
+
+    try:
+        translation_wrap = soup.select("div.results>dl.first .target a")
+        translation = ''
+        for x in range(0, len(translation_wrap)):
+            translation += " " + translation_wrap[x].text
+            # print(translation_wrap[x])
+        
+       
+        # print(" ".join(soup.select("div.results>dl.first .target a")))
+    except:
+        translation = ""
+        exit(-1)
+
+    print ("--- " + word + " --- \ne.g.: " + example + " | " + translation )    
+
+
+print('>'*53) 
+engine = pyttsx3.init()
+engine.say(word)
+engine.runAndWait()
+
+
