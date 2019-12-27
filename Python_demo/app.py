@@ -16,7 +16,7 @@ import openpyxl as xl
 
 # wb.save('222.xlsx')
 
-wb = xl.workbook()
-ws1 = wb.create_sheet("Mysheet") 
-ws.title = "Sherry"
-print(wb.sheetnames)
+# wb = xl.workbook()
+# ws1 = wb.create_sheet("Mysheet") 
+# ws.title = "Sherry"
+# print(wb.sheetnames)
