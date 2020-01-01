@@ -28,6 +28,20 @@
 // console.log(Array(7))
 // console.log(Array.isArray(Array.of(1,3,3)))
 // console.log(Array.isArray(new Uint8Array(0)))
+
+const fruits = ['apple','pear','banana','kiwi']
+const food = ['vegetable','pork','meat','egg',...fruits]
+console.log(food)
+
+
+
+return false 
+
+var arr2 = [1, 2, [3, 4, [5, 6]]];
+arr2.flat();
+console.log(arr2.flat().flat())
+
+return false;
 function a(arg){
     return Object.prototype.toString.call(arg)
 }

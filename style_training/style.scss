@@ -1,0 +1,16 @@
+
+@import './style/variables';
+@import './style/header.scss';
+
+.contact{
+    // @include flexCenter(row)
+    @extend header;
+    background:lightcoral;
+}
+
+.info h1{
+    background:linear-gradient(to left , red, orange);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color: transparent;
+    font-size: 4rem
+}
