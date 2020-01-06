@@ -1,0 +1,1 @@
+alert("hello world"),console.log("hello world"),console.log("do you know"),console.log("hello sdfsd"),console.log("hello3 world"),console.log("hello 2world");
