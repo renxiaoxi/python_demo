@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vuex/3.1.2/vuex.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        {{countDoneTodos}}
+        *****
+        {{getTodoById(2)}}
+    </div>  
+    <script>
+        
+
+        Vue.use(Vuex);
+        
+        const mapGetters = Vuex.mapGetters;
+
+        const store = new Vuex.Store({
+        state:{
+            todos:[
+            { id:1, text:'...', done:true },
+            { id:2, text:'...', done:false}
+            ]
+        },
+        getters:{
+            doneTodos:state=>{
+                return state.todos.filter(todo => todo.done)
+            },
+            countDoneTodos:(state,getters) => {
+                return getters.doneTodos.length
+            },
+            show:state => {
+                return state.todos.length
+            },
+            showSherry:(state,showSherry) => {
+                return showSherry.show
+            },
+            getTodoById:state=>(id)=>{
+                return state.todos.find(todo=>todo.id === id)
+            }
+        },
+        showSherry:{
+            show:state=> {
+                return state.todos.length
+            }
+        }
+        })
+
+        new Vue({
+        el:'#app',
+        store,
+        data:{},
+        computed:mapGetters(['doneTodos','countDoneTodos','getTodoById'])
+        // computed:{
+        //     getTodoById(id){
+        //         return this.$store.getters.getTodoById(id)
+        //     },
+        //     countDoneTodos(){
+        //         return this.$store.getters.countDoneTodos
+        //     }
+        // }
+        })
+
+        //console.log(store.getters.getTodoById(1))
+    </script>
+</body>
+</html>

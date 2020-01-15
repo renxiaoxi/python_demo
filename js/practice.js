@@ -1,4 +1,37 @@
 
+// var f = ({a:b} = {222:333}) => ({a:b})
+// console.log(f())
+
+// var f = ([a, b] = [1, 2], {x: c} = {x: a + b}) => a + b + c;
+// console.log(f()); // 6
+// let ab,ba
+
+// ({ab,ba}={ab:1,ba:2})
+// console.log(ab)
+
+// var [ab,abb,abbb,...rest] = [1,2,3,5]
+// console.log(ab)
+let {name:sname}={fname:'sherry',name:'s'}
+console.log(sname)
+
+// const x = [1,2,3,4,5,6]
+// const [y,z,...rest] = x;
+// console.log(y)
+// console.log(z)
+// console.log(rest)
+
+// let [sherry, eric] =  [2,3]
+// [sherry, eric] = [eric, sherry]
+// console.log(sherry)
+// let [sherry, eric] = [188,288]
+// setTimeout(()=>{
+//     [sherry, eric] = [eric, sherry]
+//     console.log(sherry)
+
+// },1000)
+
+
+return false;
 // const object1 = {
 //     property1: 42
 //   };
