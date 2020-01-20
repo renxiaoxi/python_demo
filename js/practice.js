@@ -1,4 +1,93 @@
 
+
+console.log('trunkArr')
+
+// let arr = [1,2,3,4,5,6,7]
+// num = 3
+// //console.log(arr.length)
+// section = Math.ceil(arr.length / 3)
+// //console.log(section)
+// let newArr = []
+// for(let i = 0; i < section; i++ ){
+//     // newArr.push(arr.slice(i*num,))
+//     newArr.push(arr.slice(i*num,num*(i+1)))
+//     console.log(i*num,num*(i+1)-1)
+// }
+// // console.log(arr.slice(1,3))
+// console.log(newArr)
+
+
+// const trunkArr = (arr,num) => {
+//     let trunk = Math.ceil(arr.length / num)
+//     let newArr = []
+//     for(let i=0; i<trunk; i++){
+//         newArr.push(arr.slice(i*num, num*(i+1)))
+//     }
+//     return newArr
+// }
+//  let arr = [23,34,222,234,677,23,1234]
+// // console.log(trunkArr(arr,5))
+
+
+// let arr_a = [5,6,7,8];
+// let arr_b = []
+// arr_a.forEach(val=>{
+//     console.log(val)
+//     arr_b.push([val])
+// })
+// // for(let i=0;i<arr_a.length;i++){
+// //     arr_b.push(arr_a[i])
+// // }
+
+// // arr1.push([2]);
+// // arr1.push([3]);
+// // console.log(arr_b)
+
+// const arr_a = [[1,2],[3,4],5,6]
+// const last_1 = [arr_a[arr_a.length-1]]
+// console.log(last_1)
+// last_1.push(5)
+// console.log(arr_a)
+
+// return false
+
+const chunkArray = (arr, len) => {
+    // Init chunked arr
+    const chunkedArr = [];
+  
+    // Loop through arr
+    arr.forEach((val,index) => {
+      // Get last element
+      console.log('\n')
+      console.log('index',index)
+      console.log('cArray_st1',chunkedArr)
+      const last = chunkedArr[chunkedArr.length - 1];
+        console.log('last_st1',last)
+        console.log('cArray_st2-3',chunkedArr)
+      // Check if last and if last length is equal to the chunk len
+      if (!last || last.length === len) {
+         // console.log('!',val)
+        chunkedArr.push([val]);
+        
+        console.log('cArray_st2',chunkedArr)
+      } else {
+        //console.log('-',val)
+        console.log('cArray_st2-4',chunkedArr)
+        last.push(val);
+        console.log('cArray_st2-5',chunkedArr)
+        console.log('last_st2',last)
+      }
+      console.log('chunkedArr_final', chunkedArr)
+      console.log('last_final', last)
+    });
+  
+    return chunkedArr;
+  };
+
+  let arr = [1,2,3,4,5,6,7]
+  console.log(chunkArray(arr,3))
+
+return false
 // var f = ({a:b} = {222:333}) => ({a:b})
 // console.log(f())
 
